@@ -1,20 +1,20 @@
 import { BiPackage } from "react-icons/bi";
-import { defineField } from "sanity";
+import { defineField, defineType } from "sanity";
 
-const otherProject = {
+const otherProject = defineType({
   name: "otherProject",
   title: "Other Work",
   description: "Schema for volunteer projects, contract work, and other random projects",
   type: "document",
   icon: BiPackage,
   fields: [
-    {
+    defineField({
       name: "name",
       title: "Project Name",
       type: "string",
       description: "Enter the name of the project",
       validation: (rule) => rule.required(),
-    },
+    }),
     defineField({
       name: "description",
       title: "Description",
@@ -22,7 +22,7 @@ const otherProject = {
       validation: (rule) => rule.max(200).required(),
       description: "Brief description of what this project was about",
     }),
-    {
+    defineField({
       name: "coverImage",
       title: "Screenshot/Cover Image",
       type: "image",
@@ -39,8 +39,8 @@ const otherProject = {
         },
       ],
       validation: (rule) => rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: "links",
       title: "Links",
       type: "array",
@@ -77,15 +77,15 @@ const otherProject = {
         },
       ],
       description: "Optional links to demo, repo, or related content",
-    },
-    {
+    }),
+    defineField({
       name: "tags",
       title: "Tags",
       type: "array",
       of: [{ type: "string" }],
       description: "Tags to categorize this project (e.g., volunteer, open-source, contract)",
-    },
+    }),
   ],
-};
+});
 
 export default otherProject;
