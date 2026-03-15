@@ -27,7 +27,9 @@ export default async function Posts() {
             post.isPublished !== true ? null : (
               <article key={post._id}>
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={post.isExternal ? post.externalLink! : `/blog/${post.slug}`}
+                  target={post.isExternal ? "_blank" : undefined}
+                  rel={post.isExternal ? "noopener noreferrer" : undefined}
                   className="flex lg:flex-row flex-col lg:items-center items-start gap-8 dark:bg-primary-bg bg-secondary-bg p-6 rounded-lg border dark:border-zinc-800 border-zinc-200 group"
                 >
                   <div className="relative lg:w-[450px] lg:h-52 w-full h-56 overflow-clip">
@@ -41,9 +43,20 @@ export default async function Posts() {
                     />
                   </div>
                   <div className="max-w-lg">
-                    <h2 className="max-w-sm text-2xl font-semibold tracking-tight mb-4">
-                      {post.title}
-                    </h2>
+                    <div className="flex items-center gap-x-2 mb-2">
+                      <h2 className="max-w-sm text-2xl font-semibold tracking-tight">
+                        {post.title}
+                      </h2>
+                      {post.isExternal && (
+                        <span className="inline-block px-2 py-1 text-xs font-semibold rounded-md bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-100">
+                          {post.externalSource === "medium"
+                            ? "Medium"
+                            : post.externalSource === "devto"
+                              ? "Dev.to"
+                              : "External"}
+                        </span>
+                      )}
+                    </div>
                     <p className="dark:text-zinc-400 text-zinc-600 text-[0.95rem]">
                       {post.description}
                     </p>
@@ -58,12 +71,14 @@ export default async function Posts() {
                             : formatDate(post._createdAt)}
                         </time>
                       </div>
-                      <div className="flex items-center gap-x-2">
-                        <BiSolidTime />
-                        <div className="">
-                          {readTime(toPlainText(post.body))}
+                      {!post.isExternal && (
+                        <div className="flex items-center gap-x-2">
+                          <BiSolidTime />
+                          <div className="">
+                            {readTime(toPlainText(post.body))}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </Link>

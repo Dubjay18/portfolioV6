@@ -13,9 +13,9 @@ module.exports = {
         inter: ["var(--inter)"],
       },
       colors: {
-        "primary-color": "#33E092",
-        "secondary-color": "#0CCE6B",
-        "tertiary-color": "#16a34a",
+        "primary-color": "#FF4444",
+        "secondary-color": "#FF0000",
+        "tertiary-color": "#A31616",
         "primary-bg": "rgba(39, 39, 43, 0.4)",
         "secondary-bg": "rgba(250, 250, 250, 0.4)",
       },

@@ -18,6 +18,8 @@ import { HiCalendar, HiChat } from "react-icons/hi";
 import { sanityFetch } from "@/lib/sanity.client";
 import { readTime } from "@/app/utils/readTime";
 import PageHeading from "@/app/components/shared/PageHeading";
+import { fetchExternalContent } from "@/lib/external-content";
+import ExternalPostView from "@/app/components/pages/ExternalPostView";
 
 type Props = {
   params: {
@@ -43,23 +45,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${post.title}`,
-    metadataBase: new URL(`https://victoreke.com/blog/${post.slug}`),
+    metadataBase: new URL(`https://jayfolio.dev/blog/${post.slug}`),
     description: post.description,
     publisher: post.author.name,
     keywords: post.tags,
     alternates: {
       canonical:
-        post.canonicalLink || `https://victoreke.com/blog/${post.slug}`,
+        post.canonicalLink ||
+        (post.isExternal && post.externalLink
+          ? post.externalLink
+          : `https://jayfolio.dev/blog/${post.slug}`),
     },
     openGraph: {
       images:
         urlFor(post.coverImage?.image).width(1200).height(630).url() ||
         fallbackImage,
-      url: `https://victoreke.com/blog/${post.slug}`,
+      url: `https://jayfolio.dev/blog/${post.slug}`,
       title: post.title,
       description: post.description,
       type: "article",
-      siteName: "victoreke.com",
+      siteName: "jayfolio.dev",
       authors: post.author.name,
       tags: post.tags,
       publishedTime: post._createdAt,
@@ -86,11 +91,53 @@ export default async function Post({ params }: Props) {
     qParams: { slug },
   });
 
-  const words = toPlainText(post.body);
-
   if (!post) {
     notFound();
   }
+  console.log(post,"po");
+  
+
+  // Handle external posts
+  if (post.isExternal && post.externalLink) {
+    const externalContent = await fetchExternalContent(
+      post.externalLink,
+      post.externalSource || "medium"
+    );
+console.log(externalContent,"ex");
+
+    if (externalContent) {
+      return (
+        <main className="max-w-7xl mx-auto md:px-16 px-6">
+          <header>
+            <Slide className="relative flex items-center gap-x-2 border-b dark:border-zinc-800 border-zinc-200 pb-8">
+              <Link
+                href="/blog"
+                className="whitespace-nowrap dark:text-zinc-400 text-zinc-400 hover:dark:text-white hover:text-zinc-700 text-sm border-b dark:border-zinc-700 border-zinc-200"
+              >
+                cd ..
+              </Link>
+              <BiChevronRight />
+              <p className="text-zinc-400 text-sm truncate">{post.title}</p>
+            </Slide>
+          </header>
+
+          <Slide delay={0.1}>
+            <ExternalPostView post={post} externalContent={externalContent} />
+          </Slide>
+s
+          <section className="max-w-3xl mt-10 lg:border-t dark:border-zinc-800 border-zinc-200 lg:py-10 pt-0">
+            <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
+              Support
+            </h3>
+            <Buymeacoffee />
+          </section>
+        </main>
+      );
+    }
+  }
+
+  // Handle internal posts
+  const words = toPlainText(post.body);
 
   return (
     <main className="max-w-7xl mx-auto md:px-16 px-6">

@@ -34,7 +34,7 @@ export const profileQuery = groq`*[_type == "profile"][0]{
   usage
 }`;
 
-export const jobQuery = groq`*[_type == "job"] | order(_createdAt desc){
+export const jobQuery = groq`*[_type == "job"] | order(coalesce(endDate, startDate) desc){
   _id,
   name,
   jobTitle,
@@ -70,6 +70,9 @@ export const singleProjectQuery = groq`*[_type == "project" && slug.current == $
 export const postsQuery = groq`*[_type == "Post"] | order(_createdAt desc){
   ${postField},
   date,
+  isExternal,
+  externalLink,
+  externalSource,
   "author": author-> {
     name, 
     photo, 
@@ -79,13 +82,20 @@ export const postsQuery = groq`*[_type == "Post"] | order(_createdAt desc){
 }`;
 
 export const featuredPostsQuery = groq`*[_type == "Post" && featured == true] | order(_createdAt desc) {
-  ${postField}
+  ${postField},
+  date,
+  isExternal,
+  externalLink,
+  externalSource,
 }`;
 
 export const singlePostQuery = groq`*[_type == "Post" && slug.current == $slug][0]{
   ${postField},
   _updatedAt,
   canonicalLink,
+  isExternal,
+  externalLink,
+  externalSource,
   date,
   tags,
   "author": author-> {

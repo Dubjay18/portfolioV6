@@ -74,9 +74,16 @@ export default function Footer() {
               Stars <em className="text-primary-color not-italic">3,329</em>
             </a> */}
 
-            <small className="text-zinc-500">
-              Copyright &copy; Victor Eke {new Date().getFullYear()} All rights
-              Reserved
+            <small className="text-[10px] text-zinc-600 dark:text-zinc-700">
+              Credits to{" "}
+              <a
+                href="https://victoreke.com"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-zinc-600 dark:text-zinc-700 hover:text-zinc-700 dark:hover:text-zinc-600"
+              >
+                Victor Eke
+              </a>
             </small>
           </div>
         </div>

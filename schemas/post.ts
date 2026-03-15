@@ -44,6 +44,33 @@ export default defineType({
         "If this post has been shared somewhere else, add a canonical url that links to it.",
     }),
     defineField({
+      name: "isExternal",
+      title: "External Blog Post",
+      type: "boolean",
+      description: "Toggle this if you're linking to an external blog (e.g., Medium). When enabled, the post body becomes optional.",
+    }),
+    defineField({
+      name: "externalLink",
+      title: "External Link",
+      type: "url",
+      description: "Link to the external blog post (e.g., Medium article URL)",
+      hidden: ({ parent }) => !parent?.isExternal,
+    }),
+    defineField({
+      name: "externalSource",
+      title: "External Source",
+      type: "string",
+      options: {
+        list: [
+          { title: "Medium", value: "medium" },
+          { title: "Dev.to", value: "devto" },
+          { title: "Other", value: "other" },
+        ],
+      },
+      description: "Specify where the external blog is hosted",
+      hidden: ({ parent }) => !parent?.isExternal,
+    }),
+    defineField({
       name: "date",
       title: "Date",
       type: "datetime",
@@ -93,6 +120,7 @@ export default defineType({
       title: "Post Body",
       type: "blockContent",
       description: "Write your post content here",
+      hidden: ({ parent }) => parent?.isExternal,
     }),
     defineField({
       name: "isPublished",

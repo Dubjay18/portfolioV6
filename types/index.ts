@@ -70,6 +70,9 @@ export type PostType = {
   slug: string;
   description: string;
   canonicalLink?: string;
+  isExternal?: boolean;
+  externalLink?: string;
+  externalSource?: "medium" | "devto" | "other";
   date?: string;
   coverImage: {
     image: string;

@@ -19,10 +19,10 @@ export default function Navbar() {
       title: "Blog",
       href: "/blog",
     },
-    {
-      title: "Photos",
-      href: "/photos",
-    },
+    // {
+    //   title: "Photos",
+    //   href: "/photos",
+    // },
   ];
 
   return (

@@ -21,7 +21,9 @@ export default async function FeaturedPosts({ params }: { params?: string }) {
             }`}
           >
             <Link
-              href={`/blog/${post.slug}`}
+              href={post.isExternal ? post.externalLink! : `/blog/${post.slug}`}
+              target={post.isExternal ? "_blank" : undefined}
+              rel={post.isExternal ? "noopener noreferrer" : undefined}
               className="flex flex-col gap-4 dark:bg-primary-bg bg-secondary-bg p-5 rounded-lg border dark:border-zinc-800 border-zinc-200"
             >
               <Image
