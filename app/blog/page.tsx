@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: "https://jayfolio.dev/blog",
     description: "Read latest stories from Jay's Blog",
     images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692636087/victoreke/blog.png",
+      "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",
   },
 };
 

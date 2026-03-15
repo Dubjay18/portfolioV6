@@ -20,7 +20,7 @@ const options = {
     "Jay is a Software Developer and Technical Writer who is passionate about building solutions and contributing to open source communities",
   url: "https://jayfolio.dev",
   ogImage:
-    "https://res.cloudinary.com/victoreke/image/upload/v1692635746/victoreke/og.png",
+    "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",
 };
 
 export const metadata: Metadata = {

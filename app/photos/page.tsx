@@ -19,15 +19,15 @@ const images = [
 ];
 
 export const metadata: Metadata = {
-  title: "Photos | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/photos"),
-  description: "Explore photos taken by Victor Eke",
+  title: "Photos | Jay",
+  metadataBase: new URL("https://jayfolio.dev/photos"),
+  description: "Explore photos taken by Jay",
   openGraph: {
-    title: "Photos | Victor Eke",
-    url: "https://victoreke.com/photos",
-    description: "Explore photos taken by Victor Eke",
+    title: "Photos | Jay",
+    url: "https://jayfolio.dev/photos",
+    description: "Explore photos taken by Jay",
     images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692635149/victoreke/photos.png",
+      "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",
   },
 };
 

@@ -12,17 +12,17 @@ import { sanityFetch } from "@/lib/sanity.client";
 import RefLink from "../components/shared/RefLink";
 
 export const metadata: Metadata = {
-  title: "About | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/about"),
+  title: "About | Jay",
+  metadataBase: new URL("https://jayfolio.dev/about"),
   description:
     "Learn more about my skills, experience and technical background",
   openGraph: {
-    title: "About | Victor Eke",
-    url: "https://victoreke.com/about",
+    title: "About | Jay",
+    url: "https://jayfolio.dev/about",
     description:
       "Learn more about my skills, experience and technical background",
     images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692635746/victoreke/og.png",
+      "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",
   },
 };
 

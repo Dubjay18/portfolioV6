@@ -19,7 +19,7 @@ export default function ExternalPostView({
   externalContent,
 }: ExternalPostViewProps) {
   const fallbackImage: string =
-    "https://res.cloudinary.com/victoreke/image/upload/v1692636087/victoreke/blog.png";
+    "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png";
 
   return (
     <article>

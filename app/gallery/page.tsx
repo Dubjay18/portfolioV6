@@ -9,12 +9,12 @@ import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "../components/shared/PageHeading";
 
 export const metadata: Metadata = {
-  title: "Project Gallery | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/gallery"),
+  title: "Project Gallery | Jay",
+  metadataBase: new URL("https://jayfolio.dev/gallery"),
   description: "A visual showcase of projects I've worked on",
   openGraph: {
-    title: "Project Gallery | Victor Eke",
-    url: "https://victoreke.com/gallery",
+    title: "Project Gallery | Jay",
+    url: "https://jayfolio.dev/gallery",
     description: "A visual showcase of projects I've worked on",
   },
 };
