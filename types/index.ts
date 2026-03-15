@@ -100,3 +100,20 @@ export type HeroeType = {
   url: string;
   met: boolean;
 };
+
+export type OtherProjectType = {
+  _id: string;
+  name: string;
+  description: string;
+  coverImage: {
+    image: string;
+    alt: string | null;
+    lqip: string;
+  };
+  links?: Array<{
+    label: string;
+    url: string;
+  }>;
+  tags?: string[];
+};
+

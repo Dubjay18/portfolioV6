@@ -6,13 +6,13 @@ import { Slide } from "../animation/Slide";
 import PageHeading from "@/app/components/shared/PageHeading";
 
 export const metadata: Metadata = {
-  title: "Blog | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/blog"),
-  description: "Read latest stories from Victor Eke's Blog",
+  title: "Blog | Jay",
+  metadataBase: new URL("https://jayfolio.dev/blog"),
+  description: "Read latest stories from Jay's Blog",
   openGraph: {
-    title: "Blog | Victor Eke",
-    url: "https://victoreke.com/blog",
-    description: "Read latest stories from Victor Eke's Blog",
+    title: "Blog | Jay",
+    url: "https://jayfolio.dev/blog",
+    description: "Read latest stories from Jay's Blog",
     images:
       "https://res.cloudinary.com/victoreke/image/upload/v1692636087/victoreke/blog.png",
   },

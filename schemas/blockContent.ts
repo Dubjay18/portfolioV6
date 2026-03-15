@@ -58,6 +58,7 @@ export default defineType({
           { title: "JSX", value: "jsx" },
           { title: "CSS", value: "css" },
           { title: "Groq", value: "graphql" },
+          { title: "Go", value: "go" },
           { title: "HTML", value: "html" },
           { title: "Json", value: "json" },
           { title: "Markdown", value: "md" },

@@ -76,8 +76,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images:
         urlFor(post.coverImage?.image).width(680).height(340).url() ||
         fallbackImage,
-      creator: `@${post.author.twitterUrl.split("twitter.com/")[1]}`,
-      site: `@${post.author.twitterUrl.split("twitter.com/")[1]}`,
+      creator: post.author.twitterUrl ? `@${post.author.twitterUrl.split(/[/]+/).pop()}` : undefined,
+      site: post.author.twitterUrl ? `@${post.author.twitterUrl.split(/[/]+/).pop()}` : undefined,
       card: "summary_large_image",
     },
   };
@@ -222,14 +222,16 @@ s
                   <h3 className="font-semibold text-lg tracking-tight">
                     {post.author.name}
                   </h3>
-                  <a
-                    href={post.author.twitterUrl}
-                    className="text-blue-500 text-sm"
-                    rel="noreferrer noopener"
-                    target="_blank"
-                  >
-                    {`@${post.author.twitterUrl.split("twitter.com/")[1]}`}
-                  </a>
+                  {post.author.twitterUrl && (
+                    <a
+                      href={post.author.twitterUrl}
+                      className="text-blue-500 text-sm"
+                      rel="noreferrer noopener"
+                      target="_blank"
+                    >
+                      {`@${post.author.twitterUrl.split(/[/]+/).pop()}`}
+                    </a>
+                  )}
                 </div>
               </address>
             </section>
@@ -276,12 +278,12 @@ s
         <Comments />
       </section>
 
-      <section className="max-w-3xl lg:py-10 pt-0">
+      {/* <section className="max-w-3xl lg:py-10 pt-0">
         <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
           Support
         </h3>
         <Buymeacoffee />
-      </section>
+      </section> */}
     </main>
   );
 }

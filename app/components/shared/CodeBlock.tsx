@@ -14,6 +14,7 @@ import yaml from "refractor/lang/yaml";
 import graphql from "refractor/lang/graphql";
 import json from "refractor/lang/json";
 import java from "refractor/lang/java";
+import go from "refractor/lang/go";
 import Clipoboard from "./Clipoboard";
 
 // Supported languages: https://prismjs.com/#supported-languages
@@ -32,6 +33,7 @@ Refractor.registerLanguage(yaml);
 Refractor.registerLanguage(graphql);
 Refractor.registerLanguage(json);
 Refractor.registerLanguage(java);
+Refractor.registerLanguage(go);
 
 type codeTypes = {
   value: {

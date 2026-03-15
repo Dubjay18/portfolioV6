@@ -109,4 +109,29 @@ export const singlePostQuery = groq`*[_type == "Post" && slug.current == $slug][
   body,
 }`;
 
+export const projectsGalleryQuery = groq`*[_type == "project"] | order(_createdAt desc){
+  _id, 
+  name,
+  "slug": slug.current,
+  tagline,
+  coverImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
+}`;
+
+export const otherProjectsQuery = groq`*[_type == "otherProject"] | order(_createdAt desc){
+  _id,
+  name,
+  description,
+  coverImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
+  links,
+  tags,
+}`;
+
 export const heroesQuery = groq`*[_type == "heroe"] | order(_createdAt asc) { _id, _createdAt, name, url, met }`;
