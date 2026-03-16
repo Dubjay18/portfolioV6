@@ -17,7 +17,7 @@ const inter = Inter({
 const options = {
   title: "Jay | Software Developer",
   description:
-    "Jay is a Software Developer and Technical Writer who is passionate about building solutions and contributing to open source communities",
+    "Software engineer building practical and scalable backend/frontend products with TypeScript, Golang, and modern web frameworks. Focused on creating software people rely on every day while continuously exploring system design, blockchain infrastructure, and craft-driven problem solving.",
   url: "https://jayfolio.dev",
   ogImage:
     "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: options.url,
   },
-  other: {
-    "google-site-verification": "IzcWMgn5Qjf-LCtA337KTGjivsf9bmod_1pZ-jxYQh8",
-  },
+  // other: {
+  //   "google-site-verification": "IzcWMgn5Qjf-LCtA337KTGjivsf9bmod_1pZ-jxYQh8",
+  // },
 };
 
 export default function RootLayout({
