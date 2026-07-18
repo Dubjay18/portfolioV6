@@ -6,18 +6,28 @@ import type { ProjectType } from "@/types";
 import { Slide } from "@/app/animation/Slide";
 import SpotlightCard from "../shared/SpotlightCard";
 
+// A fixed taxonomy, not derived from whatever tags happen to exist yet —
+// deriving purely from project.tags means the filter row collapses to just
+// "all" until projects are actually tagged in Sanity Studio. Any tag value
+// outside this set still shows as a pill on the card, it just won't have a
+// dedicated filter chip. Add to this list as the tagging vocabulary grows.
+const CATEGORIES = ["backend", "frontend", "realtime", "ai-agents"];
+
 export default function ProjectsGrid({ projects }: { projects: ProjectType[] }) {
   const [filter, setFilter] = useState("all");
 
   const filters = useMemo(() => {
-    const set = new Set<string>();
-    projects.forEach((p) => (p.tags || []).forEach((t) => set.add(t)));
-    return ["all", ...Array.from(set)];
+    const used = new Set<string>();
+    projects.forEach((p) => (p.tags || []).forEach((t) => used.add(t.toLowerCase())));
+    const extra = Array.from(used).filter((t) => !CATEGORIES.includes(t));
+    return ["all", ...CATEGORIES, ...extra];
   }, [projects]);
 
   const filtered = useMemo(() => {
     if (filter === "all") return projects;
-    return projects.filter((p) => (p.tags || []).includes(filter));
+    return projects.filter((p) =>
+      (p.tags || []).some((t) => t.toLowerCase() === filter)
+    );
   }, [projects, filter]);
 
   return (

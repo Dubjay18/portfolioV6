@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Metadata } from "next";
 import { singleProjectQuery } from "@/lib/sanity.query";
 import type { ProjectType } from "@/types";
@@ -54,6 +55,13 @@ export default async function Project({ params }: Props) {
     <main className="max-w-6xl mx-auto lg:px-16 px-8">
       <Slide>
         <div className="max-w-3xl mx-auto pt-16">
+          <Link
+            href="/projects"
+            className="font-mono text-[13px] text-accent hover:underline inline-flex items-center gap-1.5 mb-8"
+          >
+            ← back to projects
+          </Link>
+
           <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
             <h1 className="font-sans font-extrabold tracking-tight text-[clamp(30px,4.6vw,46px)] leading-[1.08] max-w-md text-ink">
               {project.name}
