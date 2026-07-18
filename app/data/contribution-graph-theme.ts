@@ -1,9 +1,16 @@
-export const espionage: any = {
-  light: ["#f0f0f0", "#c4edde", "#7ac7c4", "#f73859", "#384259"],
-  dark: ["#383838", "#4D455D", "#7DB9B6", "#F5E9CF", "#E96479"],
-};
-
 export const github: any = {
-  light: ["#ebedf0", "#fecaca", "#f87171", "#ef4444", "#dc2626"],
-  dark: ["#161b22", "#7f1d1d", "#991b1b", "#dc2626", "#ef4444"],
+  light: [
+    "oklch(90% 0.008 85)",
+    "oklch(80% 0.09 155)",
+    "oklch(70% 0.11 155)",
+    "oklch(58% 0.13 155)",
+    "oklch(48% 0.13 155)",
+  ],
+  dark: [
+    "oklch(30% 0.012 85)",
+    "oklch(50% 0.1 155)",
+    "oklch(60% 0.12 155)",
+    "oklch(70% 0.14 155)",
+    "oklch(80% 0.14 155)",
+  ],
 };

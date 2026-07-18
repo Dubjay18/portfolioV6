@@ -46,11 +46,17 @@ export const jobQuery = groq`*[_type == "job"] | order(coalesce(endDate, startDa
 }`;
 
 export const projectsQuery = groq`*[_type == "project"] | order(_createdAt desc){
-  _id, 
+  _id,
   name,
   "slug": slug.current,
   tagline,
   "logo": logo.asset->url,
+  coverImage {
+    "image": asset->url,
+    "lqip": asset->metadata.lqip,
+    alt,
+  },
+  tags,
 }`;
 
 export const singleProjectQuery = groq`*[_type == "project" && slug.current == $slug][0]{
@@ -64,7 +70,8 @@ export const singleProjectQuery = groq`*[_type == "project" && slug.current == $
     alt,
   },
   tagline,
-  description
+  description,
+  tags
 }`;
 
 export const postsQuery = groq`*[_type == "Post"] | order(_createdAt desc){

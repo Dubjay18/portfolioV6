@@ -1,90 +1,37 @@
-import Image from "next/image";
-import sanitylogo from "@/public/sanity.png";
-import vercellogo from "@/public/vercel.svg";
-import nextjslogo from "@/public/nextjs.svg";
 import UnmountStudio from "./Unmount";
+
+const SOCIALS = [
+  { label: "github", href: "https://github.com/Dubjay18" },
+  { label: "x", href: "https://x.com/d_honouredOne" },
+  { label: "linkedin", href: "https://linkedin.com/in/dubjay" },
+];
 
 export default function Footer() {
   return (
     <UnmountStudio>
-      <footer className="border-t dark:border-zinc-800 border-zinc-100 mt-44 lg:min-h-[250px] min-h-full relative">
-        <div className="max-w-7xl mx-auto flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-y-4 md:px-16 px-6 py-16">
-          <div className="flex md:flex-row flex-col items-center gap-x-2">
-            <h3 className="font-inter">Built with:</h3>
-            <ul className="flex items-center gap-x-2 text-sm dark:text-zinc-600 text-zinc-400 md:mt-0 mt-3">
-              <li>
-                <a
-                  href="https://sanity.io"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  className="flex items-center gap-x-2 dark:text-white text-zinc-600 hover:underline"
-                >
-                  <Image
-                    src={sanitylogo}
-                    width={20}
-                    height={20}
-                    alt="sanity logo"
-                  />{" "}
-                  Sanity
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://nextjs.org"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  className="flex items-center gap-x-2 dark:text-white text-zinc-600 hover:underline"
-                >
-                  <Image
-                    src={nextjslogo}
-                    width={20}
-                    height={20}
-                    alt="nextjs logo"
-                  />{" "}
-                  Next.js
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://vercel.com"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  className="flex items-center gap-x-2 dark:text-white text-zinc-600 hover:underline"
-                >
-                  <Image
-                    src={vercellogo}
-                    width={20}
-                    height={20}
-                    alt="vercel logo"
-                  />{" "}
-                  Vercel
-                </a>
-              </li>
-            </ul>
+      <footer className="border-t border-border mt-32 py-14 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-6 md:px-16 px-6">
+          <div className="text-center lg:text-left">
+            <div className="font-mono font-semibold text-[15px] mb-2 text-ink">
+              jay<span className="text-accent">.</span>dev
+            </div>
+            <div className="font-mono text-[12.5px] text-ink-faint">
+              Built with way too much attention to easing curves.
+            </div>
           </div>
 
-          <div className="flex flex-col lg:items-end items-center lg:text-start text-center">
-            {/* <a
-              className="flex items-center justify-center gap-x-2 dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-2 px-4 text-center mb-3    font-bold tracking-tight"
-              href="https://github.com/Evavic44/victoreke.com"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <BiLogoGithub />
-              Stars <em className="text-primary-color not-italic">3,329</em>
-            </a> */}
-
-            <small className="text-[10px] text-zinc-600 dark:text-zinc-700">
-              Credits to{" "}
+          <div className="flex items-center gap-6 font-mono text-[13px]">
+            {SOCIALS.map((s) => (
               <a
-                href="https://victoreke.com"
+                key={s.label}
+                href={s.href}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="text-zinc-600 dark:text-zinc-700 hover:text-zinc-700 dark:hover:text-zinc-600"
+                className="text-ink-muted hover:text-accent transition-colors duration-200"
               >
-                Victor Eke
+                {s.label}
               </a>
-            </small>
+            ))}
           </div>
         </div>
       </footer>

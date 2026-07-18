@@ -15,56 +15,62 @@ export default async function Job() {
   });
 
   return (
-    <section className="mt-32">
+    <section className="py-16">
       <Slide delay={0.16}>
-        <div className="mb-16">
-          <h2 className="font-incognito text-4xl mb-4 font-bold tracking-tight">
-            Work Experience
-          </h2>
+        <div className="font-mono text-[13px] text-accent uppercase tracking-[0.08em] mb-2">
+          Experience
         </div>
+        <h2 className="font-sans font-bold tracking-tight text-[clamp(26px,3.4vw,38px)] mb-12 max-w-[20ch] text-ink">
+          Work Experience
+        </h2>
       </Slide>
 
       {jobs.length > 0 ? (
-        <Slide delay={0.18}>
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-12 gap-y-10">
-            {jobs.map((job) => (
-              <div
-                key={job._id}
-                className="flex items-start lg:gap-x-6 gap-x-4 max-w-2xl relative before:absolute before:bottom-0 before:top-[5rem] before:left-9 before:w-[1px] before:h-[calc(100%-70px)] dark:before:bg-zinc-800 before:bg-zinc-200"
-              >
-                <RefLink
-                  href={job.url}
-                  className="grid place-items-center dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 min-h-[80px] min-w-[80px] p-2 rounded-md overflow-clip relative"
-                >
-                  <Image
-                    src={job.logo}
-                    className="object-cover duration-300"
-                    alt={`${job.name} logo`}
-                    width={50}
-                    height={50}
+        <div className="relative pl-8">
+          <div className="absolute left-0 top-[6px] bottom-[6px] w-[2px] bg-border" />
+          <div className="flex flex-col gap-y-10">
+            {jobs.map((job, i) => (
+              <Slide key={job._id} index={i}>
+                <div className="relative">
+                  <div
+                    className="absolute -left-[36px] top-1 w-[11px] h-[11px] rounded-full border-2 border-bg"
+                    style={{
+                      background: i === 0 ? "oklch(var(--accent))" : "oklch(var(--ink-faint))",
+                      boxShadow: "0 0 0 2px oklch(var(--border))",
+                    }}
                   />
-                </RefLink>
-                <div className="flex flex-col items-start">
-                  <h3 className="text-xl font-semibold">{job.name}</h3>
-                  <p>{job.jobTitle}</p>
-                  <time className="text-sm text-zinc-500 mt-2 tracking-widest uppercase">
-                    {formatDate(job.startDate)} -{" "}
-                    {job.endDate ? (
-                      formatDate(job.endDate)
-                    ) : (
-                      <span className="dark:text-primary-color text-tertiary-color">
-                        Present
-                      </span>
+                  <div className="font-mono text-xs text-ink-faint mb-1">
+                    {formatDate(job.startDate)} —{" "}
+                    {job.endDate ? formatDate(job.endDate) : (
+                      <span className="text-accent">Present</span>
                     )}
-                  </time>
-                  <p className="tracking-tight dark:text-zinc-400 text-zinc-600 my-4">
+                  </div>
+                  <div className="flex items-baseline gap-2.5 flex-wrap mb-2">
+                    <h3 className="text-xl font-bold tracking-tight text-ink">{job.name}</h3>
+                    <span className="font-mono text-[12.5px] text-accent">{job.jobTitle}</span>
+                  </div>
+                  <p className="text-[15px] leading-relaxed text-ink-muted max-w-[70ch] mb-2">
                     {job.description}
                   </p>
+                  {job.logo && (
+                    <RefLink
+                      href={job.url}
+                      className="inline-flex items-center gap-2 mt-1 text-xs text-ink-faint hover:text-accent"
+                    >
+                      <Image
+                        src={job.logo}
+                        className="object-cover rounded"
+                        alt={`${job.name} logo`}
+                        width={20}
+                        height={20}
+                      />
+                    </RefLink>
+                  )}
                 </div>
-              </div>
+              </Slide>
             ))}
           </div>
-        </Slide>
+        </div>
       ) : (
         <EmptyState
           icon={<RiBriefcase3Fill />}

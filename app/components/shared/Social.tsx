@@ -10,13 +10,12 @@ export default function Social({ type }: { type: "social" | "publication" }) {
           <li key={value.id}>
             <RefLink
               href={value.url}
-              className="flex items-center border-b dark:border-b-zinc-800 border-zinc-200 group"
+              className="flex items-center gap-2 font-mono text-[13.5px] border border-border text-ink px-6 py-3 rounded-[3px] transition-colors duration-300 hover:border-accent hover:text-accent group"
             >
               <value.icon
-                className="flex-shrink-0 h-5 w-5 text-zinc-500 group-hover:dark:text-white group-hover:text-zinc-800 duration-300"
+                className="flex-shrink-0 h-4 w-4 text-ink-faint group-hover:text-accent duration-300"
                 aria-hidden="true"
-              />{" "}
-              &nbsp;
+              />
               {value.name}
             </RefLink>
           </li>

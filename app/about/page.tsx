@@ -26,6 +26,29 @@ export const metadata: Metadata = {
   },
 };
 
+const MILESTONES = [
+  {
+    num: "01",
+    title: "Frontend first, out of necessity",
+    body: "Started shipping full Next.js codebases from scratch — component architecture, type contracts, pixel-precise Figma builds.",
+  },
+  {
+    num: "02",
+    title: "Pulled toward the backend",
+    body: "Found the real satisfaction in schema design and API contracts — modular architecture, structured logging, systems that hold under load.",
+  },
+  {
+    num: "03",
+    title: "Now exploring Layer 1",
+    body: "Studying decentralized infrastructure and what it changes about how the web gets built, one layer down from the API.",
+  },
+];
+
+const SKILLS = [
+  "TypeScript", "Go", "Node.js", "NestJS", "PostgreSQL", "Prisma",
+  "Next.js", "React", "GraphQL", "Docker", "Solidity", "WebSockets", "System Design",
+];
+
 export default async function About() {
   const profile: ProfileType = await sanityFetch({
     query: profileQuery,
@@ -33,17 +56,20 @@ export default async function About() {
   });
 
   return (
-    <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6">
+    <main className="relative max-w-7xl mx-auto md:px-16 px-6">
       <div key={profile?._id}>
-        <section className="relative grid lg:grid-cols-custom grid-cols-1 gap-x-6 justify-items-center">
+        <section className="grid lg:grid-cols-custom grid-cols-1 gap-x-12 items-center pt-20 pb-14">
           <div className="order-2 lg:order-none">
             <Slide>
-              <h1 className="font-incognito font-semibold tracking-tight sm:text-5xl text-3xl lg:leading-tight basis-1/2 mb-8">
+              <div className="font-mono text-[13px] text-accent uppercase tracking-[0.08em] mb-3">
+                About
+              </div>
+              <h1 className="font-sans font-extrabold tracking-tight text-[clamp(34px,5vw,58px)] leading-[1.03] mb-6 text-ink">
                 I&apos;m {profile?.fullName ?? "John Doe"}. I live in{" "}
                 {profile?.location ?? "'X'"}, where I build the future.
               </h1>
 
-              <div className="dark:text-zinc-400 text-zinc-600 leading-relaxed">
+              <div className="text-ink-muted leading-relaxed max-w-[58ch]">
                 {profile?.fullBio ? (
                   <PortableText
                     value={profile?.fullBio}
@@ -53,63 +79,108 @@ export default async function About() {
                   "Your bio information will show up here"
                 )}
               </div>
+
+              <div className="flex items-center gap-3.5 mt-8">
+                <RefLink
+                  href="https://peas-think-9h3.craft.me/JDK9FfS7YJmVDD"
+                  className="flex items-center justify-center gap-2 bg-ink text-bg rounded-[3px] py-3 px-6 font-mono text-[13.5px] transition-transform duration-300 hover:-translate-y-0.5"
+                >
+                  View Résumé <BiLinkExternal className="text-base" />
+                </RefLink>
+                <a
+                  href={`${profile?.resumeURL}?dl=${profile?.fullName}-resume.pdf`}
+                  className="flex items-center justify-center border border-border text-ink rounded-[3px] py-3 px-4 hover:border-accent hover:text-accent transition-colors duration-300"
+                  title="Download Resume"
+                >
+                  <BiSolidDownload className="text-lg" aria-label="Download Resume" />
+                </a>
+              </div>
+
+              {profile?.email && (
+                <a
+                  href={`mailto:${profile?.email}`}
+                  className="flex items-center gap-x-2 text-ink-muted hover:text-accent mt-5 w-fit"
+                >
+                  <BiEnvelope className="text-lg" />
+                  {profile.email}
+                </a>
+              )}
             </Slide>
           </div>
 
-          <aside className="flex flex-col lg:justify-self-center justify-self-start gap-y-8 lg:order-1 order-none mb-12">
-            <Slide delay={0.1}>
-              <div className="sticky top-10">
-                {profile?.profileImage.image ? (
+          <div className="relative justify-self-center order-1 lg:order-none mb-10 lg:mb-0">
+            <Slide delay={0.2}>
+              <div className="relative w-[260px] h-[260px]">
+                <div className="absolute -inset-[18px] rounded-full border-[1.5px] border-dashed border-border animate-ringSpin" />
+                {profile?.profileImage?.image ? (
                   <Image
-                    className="rounded-2xl mb-4 object-cover max-h-96 min-h-96 bg-top"
-                    src={profile?.profileImage.image}
-                    width={400}
-                    height={400}
+                    className="rounded-full object-cover"
+                    src={profile.profileImage.image}
+                    width={260}
+                    height={260}
                     quality={100}
-                    alt={profile?.profileImage.alt}
+                    alt={profile.profileImage.alt}
                     placeholder="blur"
-                    blurDataURL={profile?.profileImage.lqip}
+                    blurDataURL={profile.profileImage.lqip}
                     priority
                   />
                 ) : (
-                  <div className="h-96 w-[400px] bg-zinc-500 mb-4"></div>
+                  <div className="w-full h-full rounded-full bg-card-bg" />
                 )}
-
-                <div className="flex flex-col text-center gap-y-4">
-                  <div className="flex items-center gap-x-3">
-                    <RefLink
-                      href="https://peas-think-9h3.craft.me/JDK9FfS7YJmVDD"
-                      className="flex items-center justify-center text-center gap-x-2 basis-[90%] dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-2 text-lg font-incognito font-semibold"
-                    >
-                      View Résumé <BiLinkExternal className="text-base" />
-                    </RefLink>
-                    <a
-                      href={`${profile?.resumeURL}?dl=${profile?.fullName}-resume.pdf`}
-                      className="flex items-center justify-center text-center dark:text-primary-color text-secondary-color hover:underline basis-[10%] dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-3 text-lg"
-                      title="Download Resume"
-                    >
-                      <BiSolidDownload
-                        className="text-lg"
-                        aria-label="Download Resume"
-                      />
-                    </a>
-                  </div>
-
-                  <a
-                    href={`mailto:${profile?.email}`}
-                    className="flex items-center gap-x-2 hover:text-primary-color"
-                  >
-                    <BiEnvelope className="text-lg" />
-                    {profile?.email ?? "Email address no available"}
-                  </a>
-                </div>
               </div>
             </Slide>
-          </aside>
+          </div>
         </section>
-        <Slide delay={0.14}>
-          <Usage />
-        </Slide>
+
+        <section className="py-14">
+          <div className="font-mono text-[13px] text-accent uppercase tracking-[0.08em] mb-2">
+            How I got here
+          </div>
+          <h2 className="font-sans font-bold tracking-tight text-[clamp(24px,3vw,32px)] max-w-[26ch] mb-11 text-ink">
+            Three shifts that shaped how I build.
+          </h2>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
+            {MILESTONES.map((m, i) => (
+              <Slide key={m.num} index={i}>
+                <div>
+                  <div className="font-mono text-[26px] text-border mb-3.5">{m.num}</div>
+                  <h3 className="text-[19px] font-bold tracking-tight mb-2.5 text-ink">{m.title}</h3>
+                  <p className="text-[14.5px] leading-relaxed text-ink-muted">{m.body}</p>
+                </div>
+              </Slide>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-10">
+          <div className="font-mono text-[13px] text-accent uppercase tracking-[0.08em] mb-2">
+            Toolbox
+          </div>
+          <h2 className="font-sans font-bold tracking-tight text-[clamp(24px,3vw,32px)] mb-8 text-ink">
+            What I reach for.
+          </h2>
+          <div className="flex flex-wrap gap-2.5">
+            {SKILLS.map((s, i) => (
+              <Slide key={s} index={i} stagger={0.04}>
+                <span className="font-mono text-[13px] px-4 py-2.5 rounded-[20px] border border-border text-ink-muted hover:text-accent hover:border-accent hover:-translate-y-0.5 transition-all duration-300 inline-block cursor-default">
+                  {s}
+                </span>
+              </Slide>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-14 max-w-3xl">
+          <div className="border-l-2 border-accent pl-6">
+            <p className="text-[22px] leading-snug font-medium tracking-tight text-ink">
+              &quot;I love working across the stack, but my happy place is
+              designing clean APIs, scalable systems, and backend logic that
+              just works.&quot;
+            </p>
+          </div>
+        </section>
+
+        <Usage />
         <Heroes />
       </div>
     </main>

@@ -2,23 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "prism.css";
+
+:root {
+  --bg: 97% 0.006 85;
+  --bg-alt: 95.5% 0.006 85;
+  --ink: 22% 0.012 85;
+  --ink-muted: 38% 0.012 85;
+  --ink-faint: 50% 0.01 85;
+  --border: 90% 0.008 85;
+  --accent: 58% 0.13 155;
+  --accent-soft: 58% 0.13 155 / 0.1;
+  --card-bg: 98.5% 0.004 85;
+  --level-mid: 80% 0.09 155;
+}
+
+.dark {
+  --bg: 19% 0.012 85;
+  --bg-alt: 23% 0.012 85;
+  --ink: 93% 0.006 85;
+  --ink-muted: 72% 0.01 85;
+  --ink-faint: 58% 0.01 85;
+  --border: 30% 0.012 85;
+  --accent: 70% 0.14 155;
+  --accent-soft: 70% 0.14 155 / 0.16;
+  --card-bg: 24% 0.012 85;
+  --level-mid: 50% 0.1 155;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-@import "prism.css";
-
 body {
-  background-image: url("../../public/noise.png");
-  background-size: 200px 200px;
-  background-position: 0 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--incognito), "Inter", sans-serif;
+::selection {
+  background: oklch(58% 0.13 155 / 0.25);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+}
+:where(p, li, blockquote, figcaption) {
+  text-wrap: pretty;
 }
 
 .path {
@@ -32,5 +60,16 @@ h4 {
   }
   to {
     stroke-dashoffset: 12433.8193359375;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
