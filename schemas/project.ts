@@ -75,7 +75,7 @@ const project = {
       type: "array",
       of: [{ type: "string" }],
       description:
-        "Stack/category tags shown on the project card and used for filtering on the Projects page (e.g. backend, frontend, realtime, blockchain)",
+        "Stack/category tags shown on the project card and used for filtering on the Projects page (e.g. backend, frontend, realtime, ai-agents)",
     }),
   ],
 };

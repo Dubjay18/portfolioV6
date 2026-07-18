@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 const options = {
   title: "Jay | Software Developer",
   description:
-    "Software engineer building practical and scalable backend/frontend products with TypeScript, Golang, and modern web frameworks. Focused on creating software people rely on every day while continuously exploring system design, blockchain infrastructure, and craft-driven problem solving.",
+    "Software engineer building practical and scalable backend/frontend products with TypeScript, Golang, and modern web frameworks. Focused on creating software people rely on every day while continuously exploring system design, AI agent orchestration in Go, and craft-driven problem solving.",
   url: "https://jayfolio.dev",
   ogImage:
     "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",

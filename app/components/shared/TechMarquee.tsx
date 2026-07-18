@@ -6,7 +6,7 @@ const STACK = [
   "Prisma",
   "NestJS",
   "GraphQL",
-  "Solidity",
+  "MCP",
   "Docker",
   "Vercel",
 ];

@@ -13,7 +13,7 @@ import SpotlightCard from "./components/shared/SpotlightCard";
 import HeroBlob from "./components/shared/HeroBlob";
 import Link from "next/link";
 
-const ROLES = ["Backend Engineer", "Blockchain Enthusiast", "Full-stack Builder"];
+const ROLES = ["Backend Engineer", "AI Agent Systems in Go", "Full-stack Builder"];
 
 export default async function Home() {
   const [profile, projects] = await Promise.all([

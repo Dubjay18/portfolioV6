@@ -39,14 +39,14 @@ const MILESTONES = [
   },
   {
     num: "03",
-    title: "Now exploring Layer 1",
-    body: "Studying decentralized infrastructure and what it changes about how the web gets built, one layer down from the API.",
+    title: "Now building AI agent systems in Go",
+    body: "Deep in a self-directed curriculum on agent orchestration from first principles — harness engineering, context management, sandboxed execution, and durable multi-agent workflows, built in Go instead of imported as framework abstractions.",
   },
 ];
 
 const SKILLS = [
   "TypeScript", "Go", "Node.js", "NestJS", "PostgreSQL", "Prisma",
-  "Next.js", "React", "GraphQL", "Docker", "Solidity", "WebSockets", "System Design",
+  "Next.js", "React", "GraphQL", "Docker", "LLM Orchestration", "MCP", "System Design",
 ];
 
 export default async function About() {
