@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { profileQuery, projectsQuery } from "@/lib/sanity.query";
 import type { ProfileType, ProjectType } from "@/types";
 import Job from "./components/pages/Job";
@@ -85,8 +86,22 @@ export default async function Home() {
                 <Slide key={p._id} index={i} className={i === 0 ? "md:col-span-2" : ""}>
                   <Link href={`/projects/${p.slug}`}>
                     <SpotlightCard>
-                      <div className="w-full aspect-[16/10] rounded-[9px] bg-bg-alt mb-5 flex items-center justify-center font-mono text-xs text-ink-faint">
-                        product screenshot
+                      <div className="w-full aspect-[16/10] rounded-[9px] bg-bg-alt mb-5 flex items-center justify-center overflow-hidden">
+                        {p.coverImage?.image ? (
+                          <Image
+                            src={p.coverImage.image}
+                            alt={p.coverImage.alt || p.name}
+                            width={640}
+                            height={400}
+                            className="object-cover w-full h-full"
+                            placeholder={p.coverImage.lqip ? "blur" : "empty"}
+                            blurDataURL={p.coverImage.lqip}
+                          />
+                        ) : (
+                          <span className="font-mono text-xs text-ink-faint">
+                            product screenshot
+                          </span>
+                        )}
                       </div>
                       <h3 className="text-xl font-bold mb-2 tracking-tight text-ink">{p.name}</h3>
                       <p className="text-[14.5px] leading-relaxed text-ink-muted">{p.tagline}</p>
