@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/logo.png";
+import Logo from "../shared/Logo";
 import Theme from "./Theme";
 import UnmountStudio from "./Unmount";
 import MobileMenu from "./MobileMenu";
@@ -11,8 +10,8 @@ export default function Navbar() {
     <UnmountStudio>
       <header className="sticky top-0 z-50 backdrop-blur-md bg-bg/80 border-b border-border transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap py-4 md:px-16 px-6">
-          <Link href="/" className="flex items-center gap-2 font-mono font-semibold text-[15px] tracking-tight text-ink">
-            <Image src={Logo} width={30} height={30} alt="logo" />
+          <Link href="/" aria-label="jay.dev home">
+            <Logo variant="lockup" size="sm" />
           </Link>
 
           <NavLinks />

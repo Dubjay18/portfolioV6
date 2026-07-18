@@ -1,4 +1,5 @@
 import UnmountStudio from "./Unmount";
+import Logo from "../shared/Logo";
 
 const SOCIALS = [
   { label: "github", href: "https://github.com/Dubjay18" },
@@ -12,8 +13,8 @@ export default function Footer() {
       <footer className="border-t border-border mt-32 py-14 transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-6 md:px-16 px-6">
           <div className="text-center lg:text-left">
-            <div className="font-mono font-semibold text-[15px] mb-2 text-ink">
-              jay<span className="text-accent">.</span>dev
+            <div className="mb-3 flex justify-center lg:justify-start">
+              <Logo variant="mark" size="sm" />
             </div>
             <div className="font-mono text-[12.5px] text-ink-faint">
               Built with way too much attention to easing curves.
