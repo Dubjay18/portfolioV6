@@ -200,7 +200,7 @@ console.log(externalContent,"ex");
               </div>
             )}
 
-            <div className="relative w-full h-40 pt-[52.5%]">
+            <div className="relative w-full pt-[52.5%]">
               <Image
                 className="rounded-xl border border-border object-cover"
                 layout="fill"
