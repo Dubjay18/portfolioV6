@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import SunIcon from "../../assets/icons/SunIcon";
-import MoonIcon from "../../assets/icons/MoonIcon";
 
 export default function Theme() {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -16,18 +14,24 @@ export default function Theme() {
 
   if (!hasMounted)
     return (
-      <span className="animate-pulse min-w-[28px] min-h-[28px] p-2 rounded-full dark:bg-zinc-800 bg-zinc-200 border dark:border-zinc-700 border-zinc-300"></span>
+      <span className="animate-pulse w-[42px] h-[23px] rounded-xl border border-border bg-border block" />
     );
+
+  const isDark = currentTheme === "dark";
 
   return (
     <button
       onClick={toggleTheme}
-      className={`dark:bg-primary-bg bg-zinc-100 dark:text-primary-color text-zinc-500 border dark:border-zinc-800 border-zinc-200 rounded-full p-2 duration-300 transition-transform group: ${
-        currentTheme === "light" ? "-rotate-180" : "rotate-0"
+      aria-label="Toggle dark mode"
+      className={`w-[42px] h-[23px] rounded-xl border border-border relative flex-shrink-0 transition-colors duration-300 active:scale-[0.94] ${
+        isDark ? "bg-accent" : "bg-border"
       }`}
-      aria-label="Toggle Theme"
     >
-      {currentTheme === "light" ? <SunIcon /> : <MoonIcon />}
+      <span
+        className={`absolute top-[1px] w-[17px] h-[17px] rounded-full transition-[left] duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] ${
+          isDark ? "left-[21px] bg-bg" : "left-[1px] bg-card-bg"
+        }`}
+      />
     </button>
   );
 }

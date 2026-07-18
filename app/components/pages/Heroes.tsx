@@ -12,15 +12,12 @@ export default async function Heroes() {
   });
 
   return (
-    <section className="mt-32 max-w-5xl">
+    <section className="py-16 max-w-5xl">
       <Slide delay={0.17}>
-        <h2 className="text-4xl mb-4 font-bold tracking-tight">Heroes</h2>
-        <p className="dark:text-zinc-400 text-zinc-600 max-w-2xl">
+        <h2 className="text-3xl mb-4 font-bold tracking-tight text-ink">Heroes</h2>
+        <p className="text-ink-muted max-w-2xl">
           Inspired by{" "}
-          <RefLink
-            href="https://rafa.design"
-            className="dark:text-blue-400 text-blue-500 underline"
-          >
+          <RefLink href="https://rafa.design" className="text-accent underline">
             Rafael Condo&apos;s
           </RefLink>{" "}
           heroes list, here&apos;s my own curated lineup of code conjurers and
@@ -35,13 +32,13 @@ export default async function Heroes() {
         {heroes.map((heroe) => (
           <li
             key={heroe._id}
-            className="flex items-center gap-x-2 dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md px-2 py-1"
+            className="flex items-center gap-x-2 bg-card-bg border border-border rounded-md px-2 py-1"
           >
             <EasterEgg isMet={heroe.met} />
             <RefLink
               href={heroe.url}
-              className={`font-incognito tracking-wide hover:underline ${
-                heroe.met && "dark:text-green-300 text-green-800"
+              className={`tracking-wide hover:underline ${
+                heroe.met ? "text-accent" : "text-ink-muted"
               }`}
             >
               {heroe.name}

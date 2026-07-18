@@ -1,24 +1,32 @@
 import "@/app/styles/globals.css";
 import Script from "next/script";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { incognito } from "./assets/font/font";
-import { gitlabmono } from "./assets/font/font";
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import Navbar from "./components/global/Navbar";
 import Footer from "./components/global/Footer";
+import Grain from "./components/shared/Grain";
+import Pet from "./components/shared/Pet";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
-  variable: "--inter",
+  variable: "--font-outfit",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-mono",
 });
 
 const options = {
   title: "Jay | Software Developer",
   description:
-    "Software engineer building practical and scalable backend/frontend products with TypeScript, Golang, and modern web frameworks. Focused on creating software people rely on every day while continuously exploring system design, blockchain infrastructure, and craft-driven problem solving.",
+    "Software engineer building practical and scalable backend/frontend products with TypeScript, Golang, and modern web frameworks. Focused on creating software people rely on every day while continuously exploring system design, AI agent orchestration in Go, and craft-driven problem solving.",
   url: "https://jayfolio.dev",
   ogImage:
     "https://res.cloudinary.com/dubinx/image/upload/v1773605074/jay-logo.png",
@@ -53,9 +61,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${incognito.variable} ${inter.className} ${gitlabmono.variable} dark:bg-zinc-950 bg-white dark:text-white text-zinc-700`}
+        className={`${outfit.variable} ${jetbrainsMono.variable} font-sans bg-bg text-ink`}
       >
         <Providers>
+          <Grain />
+          <Pet />
           <Navbar />
           <Analytics />
           {children}

@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
@@ -10,7 +9,7 @@ import {
   HiUser,
   HiPhotograph,
 } from "react-icons/hi";
-import Logo from "../../../public/logo.png";
+import Logo from "../shared/Logo";
 
 export default function MobileMenu() {
   const [navShow, setNavShow] = useState(false);
@@ -53,24 +52,24 @@ export default function MobileMenu() {
       <button
         aria-label="Toggle Menu"
         onClick={onToggleNav}
-        className="md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-md p-2"
+        className="md:hidden bg-card-bg border border-border rounded-md p-2 text-ink"
       >
         <RxHamburgerMenu className="text-xl" />
       </button>
       <div
-        className={`md:hidden fixed left-0 top-0 z-10 h-full w-full transform duration-[600ms] ease-[cubic-bezier(0.7,0,0,1)] dark:bg-zinc-900 bg-white ${
+        className={`md:hidden fixed left-0 top-0 z-10 h-full w-full transform duration-[600ms] ease-[cubic-bezier(0.7,0,0,1)] bg-bg ${
           navShow ? "translate-x-0 rounded-none" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between mt-6 px-8">
-          <Link href="/" onClick={onToggleNav}>
-            <Image src={Logo} width={35} height={35} alt="logo" />
+          <Link href="/" onClick={onToggleNav} aria-label="jay.dev home">
+            <Logo variant="mark" size="sm" />
           </Link>
 
           <button
             aria-label="Toggle Menu"
             onClick={onToggleNav}
-            className={`md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-full p-2 duration-500 ${
+            className={`md:hidden bg-card-bg border border-border rounded-full p-2 duration-500 text-ink ${
               !navShow ? "-rotate-[360deg]" : null
             }`}
           >
@@ -82,11 +81,11 @@ export default function MobileMenu() {
             <Link
               key={link.title}
               href={link.href}
-              className="flex items-center gap-x-2 font-incognito font-semibold text-lg dark:shadow-line-dark shadow-line-light p-6 group"
+              className="flex items-center gap-x-2 font-mono font-semibold text-lg border-b border-border p-6 group text-ink"
               onClick={onToggleNav}
             >
               <link.icon
-                className="text-zinc-500 group-hover:dark:text-white group-hover:text-zinc-800 duration-300"
+                className="text-ink-faint group-hover:text-accent duration-300"
                 aria-hidden="true"
               />
               {link.title}

@@ -20,6 +20,7 @@ import { readTime } from "@/app/utils/readTime";
 import PageHeading from "@/app/components/shared/PageHeading";
 import { fetchExternalContent } from "@/lib/external-content";
 import ExternalPostView from "@/app/components/pages/ExternalPostView";
+import ScrollProgressBar from "@/app/components/shared/ScrollProgressBar";
 
 type Props = {
   params: {
@@ -108,25 +109,26 @@ console.log(externalContent,"ex");
     if (externalContent) {
       return (
         <main className="max-w-7xl mx-auto md:px-16 px-6">
+          <ScrollProgressBar />
           <header>
-            <Slide className="relative flex items-center gap-x-2 border-b dark:border-zinc-800 border-zinc-200 pb-8">
+            <Slide className="relative flex items-center gap-x-2 border-b border-border pb-8">
               <Link
                 href="/blog"
-                className="whitespace-nowrap dark:text-zinc-400 text-zinc-400 hover:dark:text-white hover:text-zinc-700 text-sm border-b dark:border-zinc-700 border-zinc-200"
+                className="whitespace-nowrap text-ink-faint hover:text-accent text-sm border-b border-border"
               >
-                cd ..
+                ← back to blog
               </Link>
               <BiChevronRight />
-              <p className="text-zinc-400 text-sm truncate">{post.title}</p>
+              <p className="text-ink-faint text-sm truncate">{post.title}</p>
             </Slide>
           </header>
 
           <Slide delay={0.1}>
             <ExternalPostView post={post} externalContent={externalContent} />
           </Slide>
-s
-          <section className="max-w-3xl mt-10 lg:border-t dark:border-zinc-800 border-zinc-200 lg:py-10 pt-0">
-            <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
+
+          <section className="max-w-3xl mt-10 lg:border-t border-border lg:py-10 pt-0">
+            <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8 text-ink">
               Support
             </h3>
             <Buymeacoffee />
@@ -141,16 +143,17 @@ s
 
   return (
     <main className="max-w-7xl mx-auto md:px-16 px-6">
+      <ScrollProgressBar />
       <header>
-        <Slide className="relative flex items-center gap-x-2 border-b dark:border-zinc-800 border-zinc-200 pb-8">
+        <Slide className="relative flex items-center gap-x-2 border-b border-border pb-8">
           <Link
             href="/blog"
-            className="whitespace-nowrap dark:text-zinc-400 text-zinc-400 hover:dark:text-white hover:text-zinc-700 text-sm border-b dark:border-zinc-700 border-zinc-200"
+            className="whitespace-nowrap text-ink-faint hover:text-accent text-sm border-b border-border"
           >
-            cd ..
+            ← back to blog
           </Link>
           <BiChevronRight />
-          <p className="text-zinc-400 text-sm truncate">{post.title}</p>
+          <p className="text-ink-faint text-sm truncate">{post.title}</p>
         </Slide>
       </header>
 
@@ -159,8 +162,8 @@ s
           className="grid lg:grid-cols-[75%,25%] grid-cols-1 relative"
           delay={0.1}
         >
-          <div className="min-h-full lg:border-r border-r-0 dark:border-zinc-800 border-zinc-200 pt-10 pb-4 lg:pr-6 px-0">
-            <div className="flex items-center flex-wrap gap-4 text-md mb-8 dark:text-zinc-400 text-zinc-600">
+          <div className="min-h-full lg:border-r border-r-0 border-border pt-10 pb-4 lg:pr-6 px-0">
+            <div className="flex items-center flex-wrap gap-4 text-md mb-8 text-ink-muted">
               <div className="flex items-center gap-x-2">
                 <HiCalendar />
                 <time dateTime={post.date ? post.date : post._createdAt}>
@@ -171,7 +174,7 @@ s
               </div>
               <Link
                 href="#comments"
-                className="flex items-center gap-x-2 dark:text-primary-color text-tertiary-color"
+                className="flex items-center gap-x-2 text-accent"
               >
                 <HiChat />
                 <div className="#comments">Comments</div>
@@ -184,9 +187,22 @@ s
 
             <PageHeading title={post.title} description={post.description} />
 
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex gap-2 flex-wrap mb-6">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-[11.5px] text-accent bg-accent-soft px-[9px] py-1 rounded-[20px]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
             <div className="relative w-full h-40 pt-[52.5%]">
               <Image
-                className="rounded-xl border dark:border-zinc-800 border-zinc-100 object-cover"
+                className="rounded-xl border border-border object-cover"
                 layout="fill"
                 src={post.coverImage?.image || fallbackImage}
                 alt={post.coverImage?.alt || post.title}
@@ -196,14 +212,14 @@ s
               />
             </div>
 
-            <div className="mt-8 dark:text-zinc-400 text-zinc-600 leading-relaxed tracking-tight text-lg">
+            <div className="mt-8 text-ink-muted leading-relaxed tracking-tight text-lg">
               <PortableText value={post.body} components={CustomPortableText} />
             </div>
           </div>
 
           <aside className="flex flex-col lg:max-h-full h-max gap-y-8 sticky top-2 bottom-auto right-0 py-10 lg:px-6 px-0">
-            <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-              <p className="dark:text-zinc-400 text-zinc-500 text-sm">
+            <section className="border-b border-border pb-10">
+              <p className="text-ink-faint text-sm">
                 Written By
               </p>
               <address className="flex items-center gap-x-3 mt-4 not-italic">
@@ -215,17 +231,17 @@ s
                       .url()}
                     alt={post.author.photo.alt}
                     layout="fill"
-                    className="dark:bg-zinc-800 bg-zinc-300 rounded-full object-cover"
+                    className="bg-card-bg rounded-full object-cover"
                   />
                 </div>
                 <div rel="author">
-                  <h3 className="font-semibold text-lg tracking-tight">
+                  <h3 className="font-semibold text-lg tracking-tight text-ink">
                     {post.author.name}
                   </h3>
                   {post.author.twitterUrl && (
                     <a
                       href={post.author.twitterUrl}
-                      className="text-blue-500 text-sm"
+                      className="text-accent text-sm"
                       rel="noreferrer noopener"
                       target="_blank"
                     >
@@ -236,15 +252,15 @@ s
               </address>
             </section>
 
-            <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-              <h3 className="text-xl font-semibold tracking-tight mb-4">
+            <section className="border-b border-border pb-10">
+              <h3 className="text-xl font-semibold tracking-tight mb-4 text-ink">
                 Tags
               </h3>
               <ul className="flex flex-wrap items-center gap-2 tracking-tight">
                 {post.tags.map((tag, id) => (
                   <li
                     key={id}
-                    className="dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md px-2 py-1 text-sm"
+                    className="bg-card-bg border border-border rounded-md px-2 py-1 text-sm text-ink-muted"
                   >
                     {tag}
                   </li>
@@ -258,8 +274,8 @@ s
               description={post.description}
             />
 
-            <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-              <h3 className="text-xl font-semibold tracking-tight mb-4">
+            <section className="border-b border-border pb-10">
+              <h3 className="text-xl font-semibold tracking-tight mb-4 text-ink">
                 Featured
               </h3>
               <FeaturedPosts params={params.post} />
@@ -270,9 +286,9 @@ s
 
       <section
         id="comments"
-        className="max-w-3xl mt-10 lg:border-t dark:border-zinc-800 border-zinc-200 lg:py-10 pt-0"
+        className="max-w-3xl mt-10 lg:border-t border-border lg:py-10 pt-0"
       >
-        <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
+        <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8 text-ink">
           Comments
         </h3>
         <Comments />

@@ -11,10 +11,10 @@ export default async function Usage() {
   });
 
   return (
-    <section className="max-w-2xl">
+    <section className="max-w-2xl py-8">
       <div className="mb-8">
-        <h2 className="text-4xl mb-4 font-bold tracking-tight">Usage</h2>
-        <p className="dark:text-zinc-400 text-zinc-600 max-w-xl">
+        <h2 className="text-3xl mb-4 font-bold tracking-tight text-ink">Usage</h2>
+        <p className="text-ink-muted max-w-xl">
           Tools, technologies and gadgets I use on a daily basis but not limited
           to.
         </p>

@@ -24,8 +24,8 @@ export default function ExternalPostView({
   return (
     <article>
       <div className="grid lg:grid-cols-[75%,25%] grid-cols-1 relative">
-        <div className="min-h-full lg:border-r border-r-0 dark:border-zinc-800 border-zinc-200 pt-10 pb-4 lg:pr-6 px-0">
-          <div className="flex items-center flex-wrap gap-4 text-md mb-8 dark:text-zinc-400 text-zinc-600">
+        <div className="min-h-full lg:border-r border-r-0 border-border pt-10 pb-4 lg:pr-6 px-0">
+          <div className="flex items-center flex-wrap gap-4 text-md mb-8 text-ink-muted">
             <div className="flex items-center gap-x-2">
               <HiCalendar />
               <time dateTime={post.date ? post.date : post._createdAt}>
@@ -38,7 +38,7 @@ export default function ExternalPostView({
               href={externalContent.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-x-2 dark:text-primary-color text-tertiary-color hover:underline"
+              className="flex items-center gap-x-2 text-accent hover:underline"
             >
               Read on{" "}
               {post.externalSource === "medium"
@@ -65,21 +65,21 @@ export default function ExternalPostView({
           </div>
 
           {/* Render external content */}
-          <div className="mt-8 dark:text-zinc-400 text-zinc-600 leading-relaxed tracking-tight text-lg prose dark:prose-invert max-w-none">
+          <div className="mt-8 text-ink-muted leading-relaxed tracking-tight text-lg prose dark:prose-invert max-w-none">
             <div
               className="space-y-4"
               dangerouslySetInnerHTML={{ __html: externalContent.content }}
             />
           </div>
 
-          <div className="mt-8 pt-6 border-t dark:border-zinc-800 border-zinc-200">
-            <p className="text-sm dark:text-zinc-400 text-zinc-600 mb-2">
+          <div className="mt-8 pt-6 border-t border-border">
+            <p className="text-sm text-ink-muted mb-2">
               This article was originally published on{" "}
               <a
                 href={externalContent.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark:text-primary-color text-tertiary-color hover:underline"
+                className="text-accent hover:underline"
               >
                 {post.externalSource === "medium"
                   ? "Medium"
@@ -92,7 +92,7 @@ export default function ExternalPostView({
         </div>
 
         <aside className="flex flex-col lg:max-h-full h-max gap-y-8 sticky top-2 bottom-auto right-0 py-10 lg:px-6 px-0">
-          <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
+          <section className="border-b border-border pb-10">
             <p className="dark:text-zinc-400 text-zinc-500 text-sm">
               Written By
             </p>
@@ -105,7 +105,7 @@ export default function ExternalPostView({
                     .url()}
                   alt={post.author.photo.alt}
                   layout="fill"
-                  className="dark:bg-zinc-800 bg-zinc-300 rounded-full object-cover"
+                  className="bg-card-bg rounded-full object-cover"
                 />
               </div>
               <div rel="author">
@@ -124,13 +124,13 @@ export default function ExternalPostView({
             </address>
           </section>
 
-          <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
+          <section className="border-b border-border pb-10">
             <h3 className="text-xl font-semibold tracking-tight mb-4">Tags</h3>
             <ul className="flex flex-wrap items-center gap-2 tracking-tight">
               {post.tags.map((tag, id) => (
                 <li
                   key={id}
-                  className="dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md px-2 py-1 text-sm"
+                  className="dark:bg-primary-bg bg-zinc-100 border border-border rounded-md px-2 py-1 text-sm"
                 >
                   {tag}
                 </li>

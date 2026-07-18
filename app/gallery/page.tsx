@@ -39,9 +39,9 @@ export default async function Gallery() {
               <Link
                 href={`/projects/${project.slug}`}
                 key={project._id}
-                className="group relative overflow-hidden rounded-lg border border-transparent dark:hover:border-zinc-600 hover:border-zinc-300 transition-all duration-300"
+                className="group relative overflow-hidden rounded-lg border border-border hover:border-accent transition-all duration-300"
               >
-                <div className="relative h-64 md:h-80 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+                <div className="relative h-64 md:h-80 w-full overflow-hidden bg-bg-alt">
                   {project.coverImage?.image ? (
                     <Image
                       src={project.coverImage.image}
@@ -52,8 +52,8 @@ export default async function Gallery() {
                       blurDataURL={project.coverImage.lqip}
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center dark:bg-zinc-800 bg-zinc-200">
-                      <span className="text-6xl">📸</span>
+                    <div className="w-full h-full flex items-center justify-center bg-bg-alt">
+                      <span className="font-mono text-xs text-ink-faint">product screenshot</span>
                     </div>
                   )}
                   {/* Dark overlay on hover */}
@@ -68,11 +68,11 @@ export default async function Gallery() {
                 </div>
 
                 {/* Card footer visible always */}
-                <div className="dark:bg-zinc-900 bg-zinc-50 p-4">
-                  <h3 className="text-lg font-semibold dark:text-white text-gray-900 mb-1">
+                <div className="bg-card-bg p-4">
+                  <h3 className="text-lg font-semibold text-ink mb-1">
                     {project.name}
                   </h3>
-                  <p className="text-sm dark:text-zinc-400 text-zinc-600 line-clamp-2">
+                  <p className="text-sm text-ink-muted line-clamp-2">
                     {project.tagline}
                   </p>
                 </div>

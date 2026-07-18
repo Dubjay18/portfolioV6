@@ -24,11 +24,11 @@ export default async function FeaturedPosts({ params }: { params?: string }) {
               href={post.isExternal ? post.externalLink! : `/blog/${post.slug}`}
               target={post.isExternal ? "_blank" : undefined}
               rel={post.isExternal ? "noopener noreferrer" : undefined}
-              className="flex flex-col gap-4 dark:bg-primary-bg bg-secondary-bg p-5 rounded-lg border dark:border-zinc-800 border-zinc-200"
+              className="flex flex-col gap-4 bg-card-bg p-5 rounded-lg border border-border hover:border-accent transition-colors duration-200"
             >
               <Image
                 src={post.coverImage?.image}
-                className="dark:bg-zinc-800 bg-zinc-100 rounded-md object-cover"
+                className="bg-bg-alt rounded-md object-cover"
                 alt={post.coverImage?.alt || post.title}
                 width={400}
                 height={230}
@@ -38,10 +38,10 @@ export default async function FeaturedPosts({ params }: { params?: string }) {
                 loading="lazy"
               />
               <div className="max-w-lg">
-                <h2 className="max-w-sm text-lg tracking-tight mb-4">
+                <h2 className="max-w-sm text-lg tracking-tight mb-4 text-ink">
                   {post.title}
                 </h2>
-                <p className="dark:text-zinc-400 text-zinc-600 text-sm">
+                <p className="text-ink-muted text-sm">
                   {post.description.slice(0, 80).padEnd(83, "...")}
                 </p>
               </div>
