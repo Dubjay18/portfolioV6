@@ -46,7 +46,12 @@ export default async function Job() {
                     )}
                   </div>
                   <div className="flex items-baseline gap-2.5 flex-wrap mb-2">
-                    <h3 className="text-xl font-bold tracking-tight text-ink">{job.name}</h3>
+                    <RefLink
+                      href={job.url}
+                      className="text-xl font-bold tracking-tight text-ink hover:text-accent"
+                    >
+                      {job.name}
+                    </RefLink>
                     <span className="font-mono text-[12.5px] text-accent">{job.jobTitle}</span>
                   </div>
                   <p className="text-[15px] leading-relaxed text-ink-muted max-w-[70ch] mb-2">
