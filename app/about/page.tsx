@@ -81,7 +81,7 @@ export default async function About() {
               </div>
 
               <div className="flex items-center gap-3.5 mt-8">
-                <RefLink
+                {/* <RefLink
                   href="https://peas-think-9h3.craft.me/JDK9FfS7YJmVDD"
                   className="flex items-center justify-center gap-2 bg-ink text-bg rounded-[3px] py-3 px-6 font-mono text-[13.5px] transition-transform duration-300 hover:-translate-y-0.5"
                 >
@@ -93,7 +93,7 @@ export default async function About() {
                   title="Download Resume"
                 >
                   <BiSolidDownload className="text-lg" aria-label="Download Resume" />
-                </a>
+                </a> */}
               </div>
 
               {profile?.email && (
